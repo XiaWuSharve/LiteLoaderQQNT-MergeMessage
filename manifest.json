@@ -2,16 +2,16 @@
     "$schema": "./manifest_schema.json",
     "manifest_version": 4,
     "type": "extension",
-    "name": "插件模板",
-    "slug": "plugin_template",
-    "description": "LiteLoaderQQNT的插件模板",
+    "name": "消息聚合",
+    "slug": "merge_messages",
+    "description": "LiteLoaderQQNT消息聚合插件",
     "version": "0.1.0",
     "icon": "./icon.png",
     "thumb": "./icon.svg",
     "authors": [
         {
-            "name": "LiteLoaderQQNT",
-            "link": "https://github.com/LiteLoaderQQNT"
+            "name": "康米Commie",
+            "link": "https://github.com/XiaWuSharve"
         }
     ],
     "platform": [
@@ -25,11 +25,11 @@
         "preload": "./src/preload.js"
     },
     "repository": {
-        "repo": "LiteLoaderQQNT/Plugin-Template",
+        "repo": "XiaWuSharve/LiteLoaderQQNT-MergeMessage",
         "branch": "main",
         "release": {
             "tag": "0.1.0",
-            "file": "Plugin-Template.zip"
+            "file": "LiteLoaderQQNT-MergeMessage.zip"
         }
     }
 }
