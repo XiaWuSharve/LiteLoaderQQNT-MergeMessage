@@ -12,17 +12,25 @@ function getName(contact) {
         return contact.getRemark() || contact.getNick();
     } else if (type === ENTITY.MEMBER) {
         const group = contact.getGroup();
-        return `${group.getRemark() || group.getName()}>${contact.getRemark() || contact.getCardName() || contact.getNick()}`;
+        return `${contact.getRemark() || contact.getCardName() || contact.getNick()}@${group.getRemark() || group.getName()}`;
     }
     return "error";
 }
 const eventChannel = EventChannel.withTriggers();
 eventChannel.subscribeEvent('receive-message', (message, source) => {
-    const contact = source.getContact();
-    const name = getName(contact);
-    const msg = message.contentToString();
-    console.log(`${name}: ${msg}`);
-    window.plugins.updateMessage(`${name}: ${msg}`);
+    //为什么console出来是空的？？？不打印方法嘛？
+    if(source.isGrayTip) {
+        const actorName = getName(source.actor);
+        const actedName = getName(source.acted);
+        console.log(actorName, actedName, source.action, source.surfix);
+        window.plugins.updateMessage(`${actorName}${source.action}${actedName}${source.surfix}`);
+    } else {
+        const contact = source.getContact();
+        const name = getName(contact);
+        const msg = message.contentToString();
+        console.log(`${name}> ${msg}`);
+        window.plugins.updateMessage(`${name}> ${msg}`);
+    }
 });
 
 // 打开设置界面时触发
