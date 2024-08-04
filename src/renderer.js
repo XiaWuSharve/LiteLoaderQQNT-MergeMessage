@@ -27,7 +27,7 @@ eventChannel.subscribeEvent('receive-message', (message, source) => {
     } else {
         const contact = source.getContact();
         const name = getName(contact);
-        const msg = message.contentToString();
+        const msg = message.contentToString().substring(0, 100);
         console.log(`${name}> ${msg}`);
         window.plugins.updateMessage(`${name}> ${msg}`);
     }
